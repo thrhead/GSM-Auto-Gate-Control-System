@@ -1,11 +1,15 @@
 #include <Arduino.h>
 #include "GsmService.h"
+#include "RelayService.h"
 
 GsmService gsmService;
+RelayService relayService;
 
 void setup() {
   Serial.begin(115200);
   Serial.println("Garage Control System Initializing...");
+
+  relayService.init();
 
   if (gsmService.init()) {
     Serial.println("GSM Module Initialized.");
@@ -27,14 +31,14 @@ void loop() {
     Serial.print("Incoming call from: ");
     Serial.println(callerId);
     
-    // Auto-reject call to avoid charges
-    if (gsmService.hangup()) {
-        Serial.println("Call rejected successfully.");
-    } else {
-        Serial.println("Failed to reject call.");
-    }
+    // Auto-reject call
+    gsmService.hangup();
+    Serial.println("Call rejected.");
     
-    // Future task: Handle authorization and relay
+    // Trigger relay (1 second pulse)
+    Serial.println("Triggering relay...");
+    relayService.trigger();
+    Serial.println("Relay triggered.");
   }
   delay(100);
 }
