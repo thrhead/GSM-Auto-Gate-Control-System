@@ -1,24 +1,24 @@
-# Plan - Garage Control MVP
+# Plan - Garaj Kontrol MVP
 
-## Phase 1: Hardware Integration & Basic Communication
-- [ ] Task: Project Scaffolding - Initialize PlatformIO project and install TinyGSM library.
-- [ ] Task: Basic UART Communication - Implement code to communicate with SIM800L via AT commands.
-- [ ] Task: Network Registration - Implement logic to wait for GSM network registration and signal strength check.
-- [ ] Task: Conductor - User Manual Verification 'Phase 1' (Protocol in workflow.md)
+## Aşama 1: Donanım Entegrasyonu ve Temel İletişim
+- [~] Görev: Proje İskeleti - PlatformIO projesini başlat ve TinyGSM kütüphanesini kur.
+- [ ] Görev: Temel UART İletişimi - SIM800L ile AT komutları üzerinden iletişim kuracak kodu uygula.
+- [ ] Görev: Ağ Kaydı - GSM ağ kaydını bekleme ve sinyal gücü kontrol mantığını uygula.
+- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 1' (Protokol workflow.md dosyasında)
 
-## Phase 2: Call Handling & Relay Control
-- [ ] Task: Incoming Call Detection - Monitor serial for RING alerts and extract Caller ID.
-- [ ] Task: Auto-Reject Logic - Implement immediate hang-up upon ring detection.
-- [ ] Task: Relay Triggering - Implement GPIO control logic for 1-second pulse.
-- [ ] Task: Conductor - User Manual Verification 'Phase 2' (Protocol in workflow.md)
+## Aşama 2: Arama Yönetimi ve Röle Kontrolü
+- [ ] Görev: Gelen Arama Algılama - Seri portu RING uyarıları için izle ve Arayan Kimliğini (Caller ID) ayıkla.
+- [ ] Görev: Otomatik Reddetme Mantığı - Zil algılandığında hemen kapatma işlemini uygula.
+- [ ] Görev: Röle Tetikleme - 1 saniyelik darbe için GPIO kontrol mantığını uygula.
+- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
 
-## Phase 3: Whitelist & SMS Management
-- [ ] Task: Persistent Storage - Implement Preferences-based whitelist management.
-- [ ] Task: SMS Command Parsing - Implement logic to handle "ADD", "REMOVE", and "STATUS" commands from Admins.
-- [ ] Task: Startup Notification - Implement SMS alert on system boot.
-- [ ] Task: Conductor - User Manual Verification 'Phase 3' (Protocol in workflow.md)
+## Aşama 3: Beyaz Liste ve SMS Yönetimi
+- [ ] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula.
+- [ ] Görev: SMS Komut Ayrıştırma - Yöneticilerden gelen "EKLE", "SIL" ve "DURUM" komutlarını işleyecek mantığı uygula.
+- [ ] Görev: Başlangıç Bildirimi - Sistem açılışında SMS uyarısı göndermeyi uygula.
+- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
 
-## Phase 4: Final Integration & Testing
-- [ ] Task: Integration - Combine call detection with whitelist verification and relay triggering.
-- [ ] Task: Stress Testing - Verify system stability under repeated calls and network loss scenarios.
-- [ ] Task: Conductor - User Manual Verification 'Phase 4' (Protocol in workflow.md)
+## Aşama 4: Son Entegrasyon ve Test
+- [ ] Görev: Entegrasyon - Arama algılamayı, beyaz liste doğrulamayı ve röle tetiklemeyi birleştir.
+- [ ] Görev: Stres Testi - Tekrarlanan aramalar ve ağ kopma senaryoları altında sistem kararlılığını doğrula.
+- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 4' (Protokol workflow.md dosyasında)

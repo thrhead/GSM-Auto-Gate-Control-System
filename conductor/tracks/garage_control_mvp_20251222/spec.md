@@ -1,22 +1,22 @@
-# Specification - Garage Control MVP
+# Teknik Şartname - Garaj Kontrol MVP
 
-## Overview
-This track implements the core functionality of the Automated Garage Door System. The system will use an ESP32 to interface with a SIM800L GSM module to detect incoming calls, verify the caller against a whitelist, and trigger a relay to open the garage door.
+## Genel Bakış
+Bu aşama, Otomatik Garaj Kapısı Sisteminin temel işlevselliğini gerçekleştirir. Sistem, gelen aramaları algılamak, arayanı beyaz listeye göre doğrulamak ve garaj kapısını açmak için bir röleyi tetiklemek üzere SIM800L GSM modülü ile arayüz oluşturan bir ESP32 kullanacaktır.
 
-## Functional Requirements
-- **Call Detection:** Monitor SIM800L for incoming calls.
-- **Auto-Hangup:** Immediately reject (busy signal) incoming calls to avoid charges.
-- **Authorization:** Check caller ID against a whitelist stored in non-volatile memory (Preferences).
-- **Relay Control:** Pulse a GPIO pin for 1 second to trigger the garage motor.
-- **Admin Management:** Support SMS commands from designated Admin numbers to add/remove users from the whitelist.
-- **Startup Notification:** Send an SMS to Admins when the system boots up.
+## Fonksiyonel Gereksinimler
+- **Arama Algılama:** Gelen aramalar için SIM800L modülünü izleme.
+- **Otomatik Reddetme (Auto-Hangup):** Ücret yansımaması için gelen aramaları hemen reddetme (meşgule atma).
+- **Yetkilendirme:** Arayan kimliğini (Caller ID), kalıcı hafızada (Preferences) saklanan beyaz liste ile kontrol etme.
+- **Röle Kontrolü:** Garaj motorunu tetiklemek için bir GPIO pinine 1 saniyelik darbe (pulse) gönderme.
+- **Yönetici (Admin) Yönetimi:** Beyaz listeye kullanıcı eklemek/çıkarmak için belirlenen Yönetici numaralarından gelen SMS komutlarını destekleme.
+- **Başlangıç Bildirimi:** Sistem açıldığında Yöneticilere bir SMS gönderme.
 
-## Technical Constraints
-- **Hardware:** ESP32, SIM800L (UART), 5V Relay Module.
-- **Language:** C++ (Arduino Framework).
-- **Library:** TinyGSM for SIM800L communication.
-- **Storage:** ESP32 `Preferences` library for persistent storage.
+## Teknik Kısıtlamalar
+- **Donanım:** ESP32, SIM800L (UART), 5V Röle Modülü.
+- **Dil:** C++ (Arduino Framework).
+- **Kütüphane:** SIM800L iletişimi için TinyGSM.
+- **Depolama:** Kalıcı depolama için ESP32 `Preferences` kütüphanesi.
 
-## Security
-- Whitelist-only access.
-- SMS commands restricted to Admin numbers.
+## Güvenlik
+- Sadece beyaz listedeki numaralar erişebilir.
+- SMS komutları sadece Yönetici numaralarıyla sınırlandırılmıştır.

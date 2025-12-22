@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-## [ ] Track: Garage Control MVP - Core functionality for garage door control via phone calls
+## [~] Track: Garage Control MVP - Core functionality for garage door control via phone calls
 *Link: [./conductor/tracks/garage_control_mvp_20251222/](./conductor/tracks/garage_control_mvp_20251222/)*
