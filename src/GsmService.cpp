@@ -20,3 +20,11 @@ bool GsmService::init() {
 bool GsmService::testAT() {
     return _modem->testAT();
 }
+
+bool GsmService::waitForNetwork() {
+    return _modem->waitForNetwork();
+}
+
+int GsmService::getSignalQuality() {
+    return _modem->getSignalQuality();
+}

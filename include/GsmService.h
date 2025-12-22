@@ -17,6 +17,8 @@ public:
     GsmService();
     bool init();
     bool testAT();
+    bool waitForNetwork();
+    int getSignalQuality();
 
 private:
     HardwareSerial* _serial;
