@@ -1,10 +1,10 @@
 # Plan - Garaj Kontrol MVP
 
-## Aşama 1: Donanım Entegrasyonu ve Temel İletişim
+## Aşama 1: Donanım Entegrasyonu ve Temel İletişim [checkpoint: 77af010]
 - [x] Görev: Proje İskeleti - PlatformIO projesini başlat ve TinyGSM kütüphanesini kur. [5034b31]
 - [x] Görev: Temel UART İletişimi - SIM800L ile AT komutları üzerinden iletişim kuracak kodu uygula. [95d0bcd]
 - [x] Görev: Ağ Kaydı - GSM ağ kaydını bekleme ve sinyal gücü kontrol mantığını uygula. [ac18094]
-- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 1' (Protokol workflow.md dosyasında)
+- [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 1' (Protokol workflow.md dosyasında)
 
 ## Aşama 2: Arama Yönetimi ve Röle Kontrolü
 - [ ] Görev: Gelen Arama Algılama - Seri portu RING uyarıları için izle ve Arayan Kimliğini (Caller ID) ayıkla.
