@@ -31,11 +31,12 @@ String GsmService::getIncomingCallNumber() {
     if (_serial->available()) {
         String line = _serial->readStringUntil('\n');
         if (line.indexOf("RING") != -1) {
-            // After RING, we wait for CLIP (Caller ID)
-            // TinyGsm can help get the caller ID
             return _modem->getCallerID();
         }
     }
     return "";
 }
 
+bool GsmService::hangup() {
+    return _modem->callHangup();
+}

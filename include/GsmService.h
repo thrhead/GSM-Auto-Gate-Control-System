@@ -20,6 +20,7 @@ public:
     bool waitForNetwork();
     int getSignalQuality();
     String getIncomingCallNumber();
+    bool hangup();
 
 private:
     HardwareSerial* _serial;

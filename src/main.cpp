@@ -13,8 +13,6 @@ void setup() {
     Serial.print("Waiting for network...");
     if (gsmService.waitForNetwork()) {
         Serial.println(" Connected.");
-        Serial.print("Signal Quality: ");
-        Serial.println(gsmService.getSignalQuality());
     } else {
         Serial.println(" Failed to connect to network.");
     }
@@ -28,6 +26,14 @@ void loop() {
   if (callerId != "") {
     Serial.print("Incoming call from: ");
     Serial.println(callerId);
+    
+    // Auto-reject call to avoid charges
+    if (gsmService.hangup()) {
+        Serial.println("Call rejected successfully.");
+    } else {
+        Serial.println("Failed to reject call.");
+    }
+    
     // Future task: Handle authorization and relay
   }
   delay(100);
