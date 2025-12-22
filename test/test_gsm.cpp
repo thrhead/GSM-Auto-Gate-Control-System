@@ -20,11 +20,18 @@ void test_gsm_network(void) {
     TEST_ASSERT_EQUAL(0, gsm.getSignalQuality());
 }
 
+void test_gsm_incoming_call(void) {
+    GsmService gsm;
+    // Interface check: should return empty string if no call
+    TEST_ASSERT_EQUAL_STRING("", gsm.getIncomingCallNumber().c_str());
+}
+
 void setup() {
     delay(2000);
     UNITY_BEGIN();
     RUN_TEST(test_gsm_init);
     RUN_TEST(test_gsm_network);
+    RUN_TEST(test_gsm_incoming_call);
     UNITY_END();
 }
 

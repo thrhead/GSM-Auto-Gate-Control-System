@@ -19,6 +19,7 @@ public:
     bool testAT();
     bool waitForNetwork();
     int getSignalQuality();
+    String getIncomingCallNumber();
 
 private:
     HardwareSerial* _serial;

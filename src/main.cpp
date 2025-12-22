@@ -5,7 +5,7 @@ GsmService gsmService;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println("Starting Garage Control System...");
+  Serial.println("Garage Control System Initializing...");
 
   if (gsmService.init()) {
     Serial.println("GSM Module Initialized.");
@@ -18,12 +18,17 @@ void setup() {
     } else {
         Serial.println(" Failed to connect to network.");
     }
-
   } else {
     Serial.println("GSM Module Initialization Failed!");
   }
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  String callerId = gsmService.getIncomingCallNumber();
+  if (callerId != "") {
+    Serial.print("Incoming call from: ");
+    Serial.println(callerId);
+    // Future task: Handle authorization and relay
+  }
+  delay(100);
 }
