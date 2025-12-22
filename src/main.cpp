@@ -1,7 +1,17 @@
 #include <Arduino.h>
+#include "GsmService.h"
+
+GsmService gsmService;
 
 void setup() {
-  // put your setup code here, to run once:
+  Serial.begin(115200);
+  Serial.println("Starting Garage Control System...");
+
+  if (gsmService.init()) {
+    Serial.println("GSM Module Initialized.");
+  } else {
+    Serial.println("GSM Module Initialization Failed!");
+  }
 }
 
 void loop() {

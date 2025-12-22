@@ -2,7 +2,7 @@
 
 ## Aşama 1: Donanım Entegrasyonu ve Temel İletişim
 - [x] Görev: Proje İskeleti - PlatformIO projesini başlat ve TinyGSM kütüphanesini kur. [5034b31]
-- [ ] Görev: Temel UART İletişimi - SIM800L ile AT komutları üzerinden iletişim kuracak kodu uygula.
+- [~] Görev: Temel UART İletişimi - SIM800L ile AT komutları üzerinden iletişim kuracak kodu uygula.
 - [ ] Görev: Ağ Kaydı - GSM ağ kaydını bekleme ve sinyal gücü kontrol mantığını uygula.
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 1' (Protokol workflow.md dosyasında)
 
