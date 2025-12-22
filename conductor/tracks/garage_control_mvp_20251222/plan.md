@@ -9,7 +9,7 @@
 ## Aşama 2: Arama Yönetimi ve Röle Kontrolü
 - [x] Görev: Gelen Arama Algılama - Seri portu RING uyarıları için izle ve Arayan Kimliğini (Caller ID) ayıkla. [ea3e887]
 - [x] Görev: Otomatik Reddetme Mantığı - Zil algılandığında hemen kapatma işlemini uygula. [cde5ae8]
-- [~] Görev: Röle Tetikleme - 1 saniyelik darbe için GPIO kontrol mantığını uygula.
+- [x] Görev: Röle Tetikleme - 1 saniyelik darbe için GPIO kontrol mantığını uygula. [c698917]
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
 
 ## Aşama 3: Beyaz Liste ve SMS Yönetimi
