@@ -13,7 +13,7 @@
 - [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
 
 ## Aşama 3: Beyaz Liste ve SMS Yönetimi
-- [~] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula.
+- [x] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula. [69dd8db]
 - [ ] Görev: SMS Komut Ayrıştırma - Yöneticilerden gelen "EKLE", "SIL" ve "DURUM" komutlarını işleyecek mantığı uygula.
 - [ ] Görev: Başlangıç Bildirimi - Sistem açılışında SMS uyarısı göndermeyi uygula.
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
