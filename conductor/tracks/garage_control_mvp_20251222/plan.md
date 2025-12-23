@@ -6,11 +6,11 @@
 - [x] Görev: Ağ Kaydı - GSM ağ kaydını bekleme ve sinyal gücü kontrol mantığını uygula. [ac18094]
 - [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 1' (Protokol workflow.md dosyasında)
 
-## Aşama 2: Arama Yönetimi ve Röle Kontrolü
+## Aşama 2: Arama Yönetimi ve Röle Kontrolü [checkpoint: 1d8d1e5]
 - [x] Görev: Gelen Arama Algılama - Seri portu RING uyarıları için izle ve Arayan Kimliğini (Caller ID) ayıkla. [ea3e887]
 - [x] Görev: Otomatik Reddetme Mantığı - Zil algılandığında hemen kapatma işlemini uygula. [cde5ae8]
 - [x] Görev: Röle Tetikleme - 1 saniyelik darbe için GPIO kontrol mantığını uygula. [c698917]
-- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
+- [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
 
 ## Aşama 3: Beyaz Liste ve SMS Yönetimi
 - [ ] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula.
