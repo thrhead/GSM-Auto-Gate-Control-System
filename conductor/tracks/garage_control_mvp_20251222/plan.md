@@ -20,5 +20,5 @@
 
 ## Aşama 4: Son Entegrasyon ve Test
 - [x] Görev: Entegrasyon - Arama algılamayı, beyaz liste doğrulamayı ve röle tetiklemeyi birleştir. [9bc5a4e]
-- [~] Görev: Stres Testi - Tekrarlanan aramalar ve ağ kopma senaryoları altında sistem kararlılığını doğrula.
+- [x] Görev: Stres Testi - Tekrarlanan aramalar ve ağ kopma senaryoları altında sistem kararlılığını doğrula. [e37b0c0]
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 4' (Protokol workflow.md dosyasında)
