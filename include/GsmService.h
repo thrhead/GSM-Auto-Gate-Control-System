@@ -22,6 +22,13 @@ public:
     String getIncomingCallNumber();
     bool hangup();
 
+    struct SMS {
+        String sender;
+        String message;
+    };
+    bool getIncomingSMS(SMS &sms);
+    bool sendSMS(String number, String message);
+
 private:
     HardwareSerial* _serial;
     TinyGsm* _modem;

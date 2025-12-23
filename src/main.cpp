@@ -7,6 +7,42 @@ GsmService gsmService;
 RelayService relayService;
 StorageService storageService;
 
+void handleSMS(GsmService::SMS sms) {
+    if (!storageService.isAdmin(sms.sender)) {
+        Serial.print("Unauthorized SMS command from: ");
+        Serial.println(sms.sender);
+        return;
+    }
+
+    String msg = sms.message;
+    msg.toUpperCase();
+    msg.trim();
+
+    if (msg.startsWith("EKLE:")) {
+        String number = sms.message.substring(5);
+        number.trim();
+        if (storageService.addUser(number)) {
+            gsmService.sendSMS(sms.sender, "NUMARA EKLENDI: " + number);
+        } else {
+            gsmService.sendSMS(sms.sender, "EKLEME HATASI!");
+        }
+    } 
+    else if (msg.startsWith("SIL:")) {
+        String number = sms.message.substring(4);
+        number.trim();
+        if (storageService.removeUser(number)) {
+            gsmService.sendSMS(sms.sender, "NUMARA SILINDI: " + number);
+        } else {
+            gsmService.sendSMS(sms.sender, "SILME HATASI (Numara bulunamadi)!");
+        }
+    } 
+    else if (msg == "DURUM") {
+        std::vector<String> users = storageService.getUsers();
+        String response = "SISTEM AKTIF. KAYITLI KULLANICI SAYISI: " + String(users.size());
+        gsmService.sendSMS(sms.sender, response);
+    }
+}
+
 void setup() {
   Serial.begin(115200);
   Serial.println("Garage Control System Initializing...");
@@ -14,40 +50,29 @@ void setup() {
   relayService.init();
   storageService.init();
 
-  // Test için ilk yöneticiyi ekleyelim (Eğer listede yoksa)
-  // NOT: Gerçek uygulamada bu numarayı buraya bir kez yazıp sonra silebilirsiniz.
-  // storageService.addAdmin("+905XXXXXXXXX"); 
-
   if (gsmService.init()) {
     Serial.println("GSM Module Initialized.");
-    
-    if (gsmService.waitForNetwork()) {
-        Serial.println("Connected to Network.");
-    } else {
-        Serial.println("Network Connection Failed.");
-    }
+    gsmService.waitForNetwork();
   } else {
     Serial.println("GSM Module Failed!");
   }
 }
 
 void loop() {
+  // Arama kontrolü
   String callerId = gsmService.getIncomingCallNumber();
   if (callerId != "") {
-    Serial.print("Incoming call from: ");
-    Serial.println(callerId);
-    
-    // Auto-reject
     gsmService.hangup();
-    Serial.println("Call rejected.");
-    
-    // Authorization Check
     if (storageService.isUserAuthorized(callerId) || storageService.isAdmin(callerId)) {
-        Serial.println("Authorized! Opening garage door...");
         relayService.trigger();
-    } else {
-        Serial.println("Unauthorized access attempt denied.");
     }
   }
+
+  // SMS kontrolü
+  GsmService::SMS incomingSms;
+  if (gsmService.getIncomingSMS(incomingSms)) {
+    handleSMS(incomingSms);
+  }
+
   delay(100);
 }

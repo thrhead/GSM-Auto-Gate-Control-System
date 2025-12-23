@@ -40,3 +40,28 @@ String GsmService::getIncomingCallNumber() {
 bool GsmService::hangup() {
     return _modem->callHangup();
 }
+
+bool GsmService::getIncomingSMS(SMS &sms) {
+    // TinyGSM handles SMS reading
+    // This is a simplified check for incoming SMS
+    if (_serial->available()) {
+        String line = _serial->readStringUntil('\n');
+        if (line.indexOf("+CMTI:") != -1) {
+            // New SMS notification
+            int index = line.substring(line.lastIndexOf(',') + 1).toInt();
+            String sender = "";
+            String message = _modem->readSMS(index, sender);
+            if (message != "") {
+                sms.sender = sender;
+                sms.message = message;
+                _modem->deleteSMS(index); // Clean up
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool GsmService::sendSMS(String number, String message) {
+    return _modem->sendSMS(number, message);
+}
