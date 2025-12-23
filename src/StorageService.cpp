@@ -23,7 +23,6 @@ bool StorageService::removeUser(String number) {
     String newUsers = "";
     bool found = false;
     
-    // Basit bir parçalama mantığı
     int start = 0;
     int end = users.indexOf(',');
     while (true) {
@@ -82,4 +81,21 @@ bool StorageService::addAdmin(String number) {
 bool StorageService::isAdmin(String number) {
     String admins = _prefs.getString("admins", "");
     return admins.indexOf(number) != -1;
+}
+
+std::vector<String> StorageService::getAdmins() {
+    std::vector<String> list;
+    String admins = _prefs.getString("admins", "");
+    if (admins == "") return list;
+
+    int start = 0;
+    int end = admins.indexOf(',');
+    while (true) {
+        String current = (end == -1) ? admins.substring(start) : admins.substring(start, end);
+        list.push_back(current);
+        if (end == -1) break;
+        start = end + 1;
+        end = admins.indexOf(',', start);
+    }
+    return list;
 }

@@ -9,8 +9,6 @@ StorageService storageService;
 
 void handleSMS(GsmService::SMS sms) {
     if (!storageService.isAdmin(sms.sender)) {
-        Serial.print("Unauthorized SMS command from: ");
-        Serial.println(sms.sender);
         return;
     }
 
@@ -23,8 +21,6 @@ void handleSMS(GsmService::SMS sms) {
         number.trim();
         if (storageService.addUser(number)) {
             gsmService.sendSMS(sms.sender, "NUMARA EKLENDI: " + number);
-        } else {
-            gsmService.sendSMS(sms.sender, "EKLEME HATASI!");
         }
     } 
     else if (msg.startsWith("SIL:")) {
@@ -32,14 +28,19 @@ void handleSMS(GsmService::SMS sms) {
         number.trim();
         if (storageService.removeUser(number)) {
             gsmService.sendSMS(sms.sender, "NUMARA SILINDI: " + number);
-        } else {
-            gsmService.sendSMS(sms.sender, "SILME HATASI (Numara bulunamadi)!");
         }
     } 
     else if (msg == "DURUM") {
         std::vector<String> users = storageService.getUsers();
         String response = "SISTEM AKTIF. KAYITLI KULLANICI SAYISI: " + String(users.size());
         gsmService.sendSMS(sms.sender, response);
+    }
+}
+
+void notifyAdmins() {
+    std::vector<String> admins = storageService.getAdmins();
+    for (String admin : admins) {
+        gsmService.sendSMS(admin, "GARAJ SISTEMI AKTIF EDILDI.");
     }
 }
 
@@ -52,14 +53,16 @@ void setup() {
 
   if (gsmService.init()) {
     Serial.println("GSM Module Initialized.");
-    gsmService.waitForNetwork();
+    if (gsmService.waitForNetwork()) {
+        Serial.println("Connected to Network.");
+        notifyAdmins();
+    }
   } else {
     Serial.println("GSM Module Failed!");
   }
 }
 
 void loop() {
-  // Arama kontrolü
   String callerId = gsmService.getIncomingCallNumber();
   if (callerId != "") {
     gsmService.hangup();
@@ -68,7 +71,6 @@ void loop() {
     }
   }
 
-  // SMS kontrolü
   GsmService::SMS incomingSms;
   if (gsmService.getIncomingSMS(incomingSms)) {
     handleSMS(incomingSms);

@@ -15,7 +15,7 @@
 ## Aşama 3: Beyaz Liste ve SMS Yönetimi
 - [x] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula. [69dd8db]
 - [x] Görev: SMS Komut Ayrıştırma - Yöneticilerden gelen "EKLE", "SIL" ve "DURUM" komutlarını işleyecek mantığı uygula. [60c478c]
-- [ ] Görev: Başlangıç Bildirimi - Sistem açılışında SMS uyarısı göndermeyi uygula.
+- [~] Görev: Başlangıç Bildirimi - Sistem açılışında SMS uyarısı göndermeyi uygula.
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
 
 ## Aşama 4: Son Entegrasyon ve Test

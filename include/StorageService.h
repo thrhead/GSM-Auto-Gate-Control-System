@@ -19,6 +19,7 @@ public:
     // Yönetici işlemleri
     bool addAdmin(String number);
     bool isAdmin(String number);
+    std::vector<String> getAdmins();
 
 private:
     Preferences _prefs;
