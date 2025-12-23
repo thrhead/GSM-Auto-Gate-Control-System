@@ -28,6 +28,7 @@ public:
     };
     bool getIncomingSMS(SMS &sms);
     bool sendSMS(String number, String message);
+    void reset();
 
 private:
     HardwareSerial* _serial;

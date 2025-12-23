@@ -7,6 +7,9 @@ GsmService::GsmService() {
 }
 
 bool GsmService::init() {
+    pinMode(SIM800_RST_PIN, OUTPUT);
+    digitalWrite(SIM800_RST_PIN, HIGH); // Default state
+    
     // Begin serial communication
     _serial->begin(9600, SERIAL_8N1, SIM800_RX_PIN, SIM800_TX_PIN);
     delay(3000); // Wait for module to stabilize
@@ -27,7 +30,6 @@ int GsmService::getSignalQuality() {
 }
 
 String GsmService::getIncomingCallNumber() {
-    // Check if there is data from the modem
     if (_serial->available()) {
         String line = _serial->readStringUntil('\n');
         if (line.indexOf("RING") != -1) {
@@ -42,19 +44,16 @@ bool GsmService::hangup() {
 }
 
 bool GsmService::getIncomingSMS(SMS &sms) {
-    // TinyGSM handles SMS reading
-    // This is a simplified check for incoming SMS
     if (_serial->available()) {
         String line = _serial->readStringUntil('\n');
         if (line.indexOf("+CMTI:") != -1) {
-            // New SMS notification
             int index = line.substring(line.lastIndexOf(',') + 1).toInt();
             String sender = "";
             String message = _modem->readSMS(index, sender);
             if (message != "") {
                 sms.sender = sender;
                 sms.message = message;
-                _modem->deleteSMS(index); // Clean up
+                _modem->deleteSMS(index);
                 return true;
             }
         }
@@ -64,4 +63,13 @@ bool GsmService::getIncomingSMS(SMS &sms) {
 
 bool GsmService::sendSMS(String number, String message) {
     return _modem->sendSMS(number, message);
+}
+
+void GsmService::reset() {
+    Serial.println("Hardware resetting SIM800L...");
+    digitalWrite(SIM800_RST_PIN, LOW);
+    delay(100);
+    digitalWrite(SIM800_RST_PIN, HIGH);
+    delay(3000);
+    init();
 }
