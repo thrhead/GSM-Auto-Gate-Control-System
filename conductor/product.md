@@ -10,7 +10,7 @@ Bu proje, ESP32 mikrodenetleyici ve SIM800L GSM modülü kullanarak geliştirile
 ## Key Features
 - **Arama ile Kontrol:** Yetkili bir numaradan gelen aramayı algılayarak röle tetikleme.
 - **Güvenlik (Beyaz Liste):** Sadece önceden tanımlanmış telefon numaralarından gelen isteklere yanıt verme.
-- **SMS ile Yönetim:** Yeni numara ekleme, silme veya sistem durumunu sorgulama (Opsiyonel).
+- **SMS ile Yönetim:** Yönetici numaraları üzerinden SMS ile numara ekleme, silme ve sistem durumu sorgulama.
 - **Röle Kontrolü:** Garaj motorunu tetiklemek için yapılandırılabilir röle çıkışı.
 - **Durum Göstergesi:** Cihaz üzerindeki LED'ler aracılığıyla şebeke ve sistem durumu takibi.
 
