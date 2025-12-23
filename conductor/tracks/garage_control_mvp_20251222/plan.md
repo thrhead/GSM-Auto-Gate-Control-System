@@ -19,6 +19,6 @@
 - [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
 
 ## Aşama 4: Son Entegrasyon ve Test
-- [ ] Görev: Entegrasyon - Arama algılamayı, beyaz liste doğrulamayı ve röle tetiklemeyi birleştir.
+- [~] Görev: Entegrasyon - Arama algılamayı, beyaz liste doğrulamayı ve röle tetiklemeyi birleştir.
 - [ ] Görev: Stres Testi - Tekrarlanan aramalar ve ağ kopma senaryoları altında sistem kararlılığını doğrula.
 - [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 4' (Protokol workflow.md dosyasında)
