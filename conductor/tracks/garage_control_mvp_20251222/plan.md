@@ -12,11 +12,11 @@
 - [x] Görev: Röle Tetikleme - 1 saniyelik darbe için GPIO kontrol mantığını uygula. [c698917]
 - [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 2' (Protokol workflow.md dosyasında)
 
-## Aşama 3: Beyaz Liste ve SMS Yönetimi
+## Aşama 3: Beyaz Liste ve SMS Yönetimi [checkpoint: d35d25c]
 - [x] Görev: Kalıcı Depolama - Preferences tabanlı beyaz liste yönetimini uygula. [69dd8db]
 - [x] Görev: SMS Komut Ayrıştırma - Yöneticilerden gelen "EKLE", "SIL" ve "DURUM" komutlarını işleyecek mantığı uygula. [60c478c]
 - [x] Görev: Başlangıç Bildirimi - Sistem açılışında SMS uyarısı göndermeyi uygula. [3d96506]
-- [ ] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
+- [x] Görev: Conductor - Kullanıcı Manuel Doğrulama 'Aşama 3' (Protokol workflow.md dosyasında)
 
 ## Aşama 4: Son Entegrasyon ve Test
 - [ ] Görev: Entegrasyon - Arama algılamayı, beyaz liste doğrulamayı ve röle tetiklemeyi birleştir.
