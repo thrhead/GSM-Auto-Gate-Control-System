@@ -1,27 +1,33 @@
 #include <Arduino.h>
 #include "GsmService.h"
 #include "RelayService.h"
+#include "StorageService.h"
 
 GsmService gsmService;
 RelayService relayService;
+StorageService storageService;
 
 void setup() {
   Serial.begin(115200);
   Serial.println("Garage Control System Initializing...");
 
   relayService.init();
+  storageService.init();
+
+  // Test için ilk yöneticiyi ekleyelim (Eğer listede yoksa)
+  // NOT: Gerçek uygulamada bu numarayı buraya bir kez yazıp sonra silebilirsiniz.
+  // storageService.addAdmin("+905XXXXXXXXX"); 
 
   if (gsmService.init()) {
     Serial.println("GSM Module Initialized.");
     
-    Serial.print("Waiting for network...");
     if (gsmService.waitForNetwork()) {
-        Serial.println(" Connected.");
+        Serial.println("Connected to Network.");
     } else {
-        Serial.println(" Failed to connect to network.");
+        Serial.println("Network Connection Failed.");
     }
   } else {
-    Serial.println("GSM Module Initialization Failed!");
+    Serial.println("GSM Module Failed!");
   }
 }
 
@@ -31,14 +37,17 @@ void loop() {
     Serial.print("Incoming call from: ");
     Serial.println(callerId);
     
-    // Auto-reject call
+    // Auto-reject
     gsmService.hangup();
     Serial.println("Call rejected.");
     
-    // Trigger relay (1 second pulse)
-    Serial.println("Triggering relay...");
-    relayService.trigger();
-    Serial.println("Relay triggered.");
+    // Authorization Check
+    if (storageService.isUserAuthorized(callerId) || storageService.isAdmin(callerId)) {
+        Serial.println("Authorized! Opening garage door...");
+        relayService.trigger();
+    } else {
+        Serial.println("Unauthorized access attempt denied.");
+    }
   }
   delay(100);
 }
