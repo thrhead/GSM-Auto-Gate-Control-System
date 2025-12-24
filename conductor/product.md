@@ -1,6 +1,6 @@
 # Initial Concept
 
-ESP32 + SIM800L modülünü ile çalışan bir otomatik garaj kapısı sistemi kurmak istiyorum. bunun için telefondan arama yaparak, garaj kapısının açılması gerekiyor. hangi yazılım dilini kullanmalıyım?
+
 
 # Product Description
 
